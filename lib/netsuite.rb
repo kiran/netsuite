@@ -3,6 +3,7 @@ require 'set'
 require 'savon'
 require 'netsuite/version'
 require 'netsuite/errors'
+require 'netsuite/utilities'
 require 'netsuite/core_ext/string/lower_camelcase'
 
 module NetSuite
@@ -16,6 +17,7 @@ module NetSuite
     autoload :ListSupport,    'netsuite/namespaces/list_support'
     autoload :PlatformCommon, 'netsuite/namespaces/platform_common'
     autoload :PlatformCore,   'netsuite/namespaces/platform_core'
+    autoload :TranBank,       'netsuite/namespaces/tran_bank'
     autoload :TranCust,       'netsuite/namespaces/tran_cust'
     autoload :TranGeneral,    'netsuite/namespaces/tran_general'
     autoload :TranSales,      'netsuite/namespaces/tran_sales'
@@ -40,6 +42,7 @@ module NetSuite
     autoload :GetSelectValue,   'netsuite/actions/get_select_value'
     autoload :Initialize,       'netsuite/actions/initialize'
     autoload :Update,           'netsuite/actions/update'
+    autoload :Upsert,           'netsuite/actions/upsert'
     autoload :Search,           'netsuite/actions/search'
     autoload :SearchMoreWithId, 'netsuite/actions/search_more_with_id'
   end
@@ -78,6 +81,9 @@ module NetSuite
     autoload :ContactList,                'netsuite/records/contact_list'
     autoload :Contact,                    'netsuite/records/contact'
     autoload :Department,                 'netsuite/records/department'
+    autoload :Deposit,                    'netsuite/records/deposit'
+    autoload :DepositPayment,             'netsuite/records/deposit_payment'
+    autoload :DepositPaymentList,         'netsuite/records/deposit_payment_list'
     autoload :Duration,                   'netsuite/records/duration'
     autoload :InventoryItem,              'netsuite/records/inventory_item'
     autoload :Invoice,                    'netsuite/records/invoice'

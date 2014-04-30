@@ -1,20 +1,22 @@
 module NetSuite
   module Records
-    class PhoneCall
+    class Deposit
       include Support::Fields
       include Support::RecordRefs
       include Support::Records
       include Support::Actions
-      include Namespaces::ActSched
+      include Namespaces::TranBank
 
-      actions :get, :add, :delete, :update, :upsert
+      actions :get, :add, :delete
 
-      fields :title, :message, :phone, :status, :priority, :start_date, :end_date,
-        :start_time, :end_time, :completed_date, :timed_event, :access_level, :timed_event
+      fields :created_date, :last_modified_date, :currency_name, :tran_id, :total, :tran_date, :memo, :to_be_printed
 
-      field :contact_list, ContactList
+      record_refs :custom_form, :account, :posting_period, :subsidiary, :department, :klass, :location
 
-      record_refs :assigned, :owner, :company, :contact
+      field :payment_list,      DepositPaymentList
+      # field :other_list, DepositOtherList
+      # field :cash_back_list, DepositCashBackList
+      field :custom_field_list, CustomFieldList
 
       attr_reader   :internal_id
       attr_accessor :external_id
@@ -24,6 +26,7 @@ module NetSuite
         @external_id = attributes.delete(:external_id) || attributes.delete(:@external_id)
         initialize_from_attributes_hash(attributes)
       end
+
     end
   end
 end
